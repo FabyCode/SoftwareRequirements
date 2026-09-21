@@ -29,7 +29,14 @@ body:
       label: Epic
       description: Select the functional Epic associated with this idea.
       options:
-        - Epic 1
+        - Epic 1 — User Identity & Access Management
+        - Epic 2 — Group Workspace & Frictionless Onboarding
+        - Epic 3 — Expense Logging & Categorization
+        - Epic 4 — Calculation Engine & Debt Optimization
+        - Epic 5 — External Settlement Bridge & Debt Resolution
+        - Epic 6 — Ledger Dashboards & Expense Analytics
+        - Epic 7 — Activity Tracking & Automated Reminders
+        - Epic 8 — Platform Administration & Data Governance
     validations:
       required: true
 
