@@ -16,20 +16,21 @@ When asked to analyze a Functional Idea:
    - Examine manually created Use Cases in the repository to align with existing style, granularity, and naming conventions.
 2. **Evaluate Use Case Boundaries & Actor Goals**:
    - Do NOT assume a 1:1 mapping between Functional Ideas and Use Cases.
-   - Detect separate actor goals and suggest multiple distinct Use Cases when an idea covers compound workflows (e.g., logging vs. settlement, or member input vs. admin approval).
+   - Detect separate actor goals and suggest multiple distinct Use Cases when an idea covers compound workflows (e.g., group creation vs. member invitation, expense logging vs. debt settlement).
    - If an idea represents a sub-step or variation, evaluate whether it belongs inside an existing Use Case flow.
 3. **Check for Duplication & Existing Coverage**:
    - Review current sub-issues thoroughly.
    - If existing sub-issues already satisfy the Functional Idea, explicitly state that no new Use Cases are required. Do not list existing sub-issues as new candidate proposals.
-4. **Identify Ambiguities & Open Questions**:
-   - Never invent, assume, or fabricate business decisions or missing requirements.
-   - Any unknown business rule, financial edge case, or missing policy must be documented under Open Questions.
+4. **Identify Focused, High-Value Open Questions**:
+   - Never invent, assume, or fabricate business decisions or missing domain rules.
+   - **Avoid bloat**: Do not list trivial UI behaviors, standard validation mechanics (e.g., "Should a confirmation appear?", "What happens on network failure?"), or features belonging to other epics.
+   - Limit questions strictly to 2 to 4 high-impact business or financial policy decisions directly needed to clarify the interaction.
 5. **Output Requirement for Phase 1**:
    - Present a clear analysis summary containing:
      - Identification of the parent Functional Idea.
      - Coverage breakdown (what is already satisfied by existing sub-issues).
      - New Candidate Use Case(s) proposed with their isolated actor goal (or "None" if fully covered).
-     - Explicit list of Open Questions / Missing Information.
+     - Curated list of 2 to 4 high-impact Open Questions.
    - **CRITICAL RESTRICTION**: During Phase 1, NEVER create, update, edit, close, or delete any GitHub Issue or sub-issue. Always wait for human approval before moving to Phase 2.
 
 ---
@@ -49,6 +50,14 @@ Phase 2 executes ONLY after a human reviewer explicitly approves a specific cand
 
 ---
 
+## Writing Guidelines & Concrete Role Phrasing
+
+- **Natural Domain Roles Over "Actor"**: Do not use the abstract word "actor" in the descriptions, flows, or triggers. Infer and use the concrete domain role based on the context (e.g., use `The user`, `The group creator`, `The payer`, `The participant`, or `The administrator`).
+- **Active Voice in Steps**: Write all flow steps using the resolved role name (e.g., "1. The user initiates...", "2. The group creator enters...", "3. The system validates...").
+- **Concise Open Questions**: Keep the `## Open Questions` section in Phase 2 strictly trimmed to essential unresolved policies (maximum 3–4 items). Exclude generic error handling, UI aesthetics, or secondary interactions.
+
+---
+
 ## Use Case Specification Template
 
 Every generated Use Case must follow this exact markdown structure:
@@ -56,54 +65,58 @@ Every generated Use Case must follow this exact markdown structure:
 # UCXX — Use Case Name
 
 ## Description
-[Brief summary of the interaction between the actor and the system]
+[Brief summary of the interaction between the primary role and the system]
 
 ## Primary Actor
-[The main user or role driving the interaction to achieve a goal]
+[Specific domain role, e.g., User, Group Creator, Payer, Group Member]
 
 ## Supporting Actors
-[External systems, services, or secondary entities involved, if any]
+[External systems or services involved, such as payment gateways or notification services; specify "None" if purely internal]
 
 ## Benefit
-[The clear value or outcome delivered to the primary actor]
+[The concrete value or outcome delivered to the primary role]
 
 ## Trigger
-[The specific event that initiates the use case execution]
+[The specific event that initiates the interaction]
 
 ## Preconditions
-[Conditions that must be true before the use case can start, or prerequisite use cases]
+[Essential prerequisites that must be satisfied before starting, e.g., authentication status or prerequisite Use Cases]
 
 ## Primary Flow
-1. The actor...
-2. The system...
-3. ...
+1. The [specific role] initiates...
+2. The system requests...
+3. The [specific role] provides...
+4. The system validates...
+5. The system records/updates...
 
 ## Postconditions
-[The state of the system and ledger after successful completion]
+[The guaranteed state of the system and ledger after successful completion]
 
 ## Alternate Flows
-- **[Flow Name]**: [Path variations where the actor still successfully achieves their goal]
+- **[Flow Name]**: [Path variations where the primary role still successfully achieves the goal]
 
 ## Exception Flows
-- **[Flow Name]**: [Error conditions or failure scenarios where the actor cannot achieve their goal]
+- **[Flow Name]**: [Validation failures, cancellations, or roadblocks where the primary role does NOT achieve the goal]
 
 ## Open Questions
-- [Unresolved business rules, edge cases, or decisions requiring sponsor/stakeholder clarification]
+- [2 to 4 high-priority business rules or policy decisions requiring stakeholder clarification]
 
 ---
 
 ## Flow Classification Rules
-- **Alternate Flows**: The execution path changes (different user choice, alternative authentication, fallback method), but the primary actor **still achieves** their goal.
-- **Exception Flows**: An error, validation failure, cancellation, or rejection occurs such that the primary actor **does NOT achieve** their goal.
+- **Alternate Flows**: The path or input method changes, but the primary role **still achieves** the intended goal.
+- **Exception Flows**: A terminal validation failure, policy denial, or cancellation occurs where the primary role **does NOT achieve** the goal.
 
 ---
 
 ## Scope Boundaries & Guardrails (What NOT to Create)
 To preserve the abstraction level of Requirements Engineering Use Cases, you are strictly forbidden from generating:
+- **No Generic "Actor" Phrasing**: Always use the concrete contextual role name.
 - **No User Stories** (e.g., "As a user, I want...").
 - **No Acceptance Criteria**.
 - **No Gherkin scenarios** (e.g., `Given-When-Then`).
 - **No Test cases or test plans**.
-- **No Technical implementation details** (do not mention database tables, specific programming language syntax, internal REST endpoints, SQL queries, or frontend frameworks).
+- **No Technical implementation details** (do not mention database tables, SQL queries, REST endpoints, JSON payloads, or frontend frameworks).
+- **No Question Flooding**: Never exceed 4 open questions; omit generic questions about standard UI confirmations or obvious validation failures.
 - **No Solution architecture design**.
-- **No Assumed business rules** (unspecified logic belongs in `## Open Questions`).
+- **No Financial Assumptions**: Never assume debt-settlement algorithms, rounding policies, or currency conversions unless documented; record high-impact financial uncertainties under Open Questions.
