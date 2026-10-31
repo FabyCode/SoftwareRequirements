@@ -142,3 +142,59 @@ All generated Use Case specifications must adhere strictly to this Markdown temp
 - [List of 2 to 4 critical unresolved financial rules or product policy decisions]
 
 ```
+
+
+---
+
+## Standard Template to Output
+
+**GitHub Upload Rule:** Create this issue as a SUB-ISSUE of the Parent Functional Idea issue.
+
+```markdown
+
+**Title**
+As a <USER>, I want to <ACTION> so that I <BENEFIT>.
+
+**Description**
+[Provide clear narrative description here]
+
+**Acceptance Criteria**
+- [ ] [Successful behavior requirement 1]
+- [ ] [Successful behavior requirement 2]
+- [ ] [Alternate flow requirement]
+- [ ] [Error / Failure scenario requirement]
+- [ ] In Scope: [In-scope boundary details]
+- [ ] Out of Scope: [Out-of-scope boundary details]
+
+**Implementation Details**
+Frontend:
+- [Frontend detail 1]
+
+Backend:
+- [Backend detail 1]
+
+Database:
+- [Database detail 1]
+
+**Test Notes**
+Happy-Path Scenarios:
+- [Happy path scenario 1]
+
+Alternate-Path Scenarios:
+- [Alternate path scenario 1]
+
+Exception or Error Scenarios:
+- [Exception scenario 1]
+
+Data Combinations That Matter:
+- [Data combination 1]
+
+Integration Points to Mock/Stub:
+- [Integration point 1]
+
+Suggested Automation Level:
+- API: [API testing scope]
+- UI/E2E: [E2E testing scope]
+
+Manual Validation Notes:
+- [Manual check 1]
