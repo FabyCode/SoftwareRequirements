@@ -30,8 +30,6 @@ When working with functional ideas:
 
 Unless explicitly requested, do NOT transform functional ideas into:
 
-- User Stories
-- Use Cases
 - Formal Requirements
 - Acceptance Criteria
 - Gherkin scenarios
