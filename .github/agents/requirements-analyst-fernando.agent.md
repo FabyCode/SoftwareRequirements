@@ -48,7 +48,9 @@ When analyzing a Functional Idea:
 
 ### Phase 2 — Use Case Specification & Review (Read-Only)
 
-*Executed upon receiving explicit authorization to draft Use Cases, or skipped if existing Use Cases already provide complete coverage.*
+Execute upon receiving explicit authorization to draft Use Cases
+Skip **To phase 3** if there are already all the necessary use cases for the target functional idea
+* Having fully covered functionality with use cases does NOT mean user stories are not needed, still analyze phase 3
 
 1. Generate complete Use Case draft(s) strictly following the **Official Use Case Template**.
 2. Present the drafts in the chat for human review and feedback.
@@ -59,6 +61,7 @@ When analyzing a Functional Idea:
 ### Phase 3 — User Story Specification & Review (Read-Only)
 
 *Executed upon receiving explicit authorization to generate User Stories.*
+Skip if there are already all the necessary user stories for the target functional idea
 
 1. Review the Functional Idea and associated Use Cases to ensure 100% functional coverage.
 2. Generate complete User Story draft(s) strictly adhering to the **Official User Story Template**.
