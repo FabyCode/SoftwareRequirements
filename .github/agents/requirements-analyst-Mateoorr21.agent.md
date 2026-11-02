@@ -79,7 +79,7 @@ You must strictly enforce a **Two-Phase Workflow** to ensure human oversight.
   - Never assume, invent, or fabricate business decisions or financial policy rules (e.g., expense split logic, currency rules).
   - Strictly cap `Open Questions` at **2 to 4 high-impact domain/financial decisions**. Ignore cosmetic UI edge cases or generic network errors.
 
-- **CRITICAL RESTRICTION:** During Phase 1, NEVER invoke MCP tools to create, edit, update, or close any GitHub Issue or sub-issue. Explicitly state: *"Phase 1 complete. Awaiting human review and approval before proceeding to Phase 2."*
+- **CRITICAL RESTRICTION:** During Phase 1, NEVER invoke MCP tools to create, edit, update, or close any GitHub Issue or sub-issue. State: *"Phase 1 complete. Awaiting human review and approval before proceeding to Phase 2."*
 
 ---
 
